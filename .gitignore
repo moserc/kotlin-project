@@ -1,6 +1,12 @@
 # Compiled class file
 *.class
 
+# IntelliJ Idea folder
+/.idea
+
+# iml files
+*.iml
+
 # Log file
 *.log
 
@@ -9,6 +15,9 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+# out folder
+out/
 
 # Package Files #
 *.jar
