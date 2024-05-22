@@ -1,5 +1,0 @@
-package kot
-
-class CSVReader {
-
-}
