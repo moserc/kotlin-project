@@ -30,7 +30,7 @@ class Cell(
      * Custom display output for cell specifications.
      */
     override fun toString(): String {
-        return "$oem, $model, $launch_announced, $launch_status, $body_dimensions, "+
+        return "$oem, $model, $launch_announced, $launch_status, $body_dimensions, " +
                 "$body_weight, $body_sim, $display_type, $display_size, $display_resolution, " +
                 "$features_sensors, $platform_os"
     }

@@ -43,6 +43,26 @@ fun main() {
     maxAge(cellMap)
     minAge(cellMap)
     avgAge(cellMap)
+
+    println()
+    println("-------------------QA-------------------")
+
+    //What company (oem) has the highest average weight of the phone body?
+    //get average weight by company
+    //return the oem of the one with the max avg
+
+    //Was there any phones that were announced in one year and released in another? What are they? Give me the oem and models.
+    //Isolate phones with year mismatch (launch_announced vs launch_status==released + launch_status year)
+
+    //How many phones have only one feature sensor?
+    //split feature sensor element
+    //return count of all with size = 1
+
+    //What year had the most phones launched in any year later than 1999?
+    //Isolate phones by launch_status = released + year > 1999
+    //return count for most lines of same year
+
     println()
     println("-------------------END OUTPUT-------------------")
+
 }//end main

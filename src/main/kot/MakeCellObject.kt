@@ -27,7 +27,7 @@ fun makeCellObject(line: String): Cell {
 
     //cleaning task for body_sim: capture all but yes or no
     val body_sim = cleanData.getOrNull(6)
-    val execptYesNo = when (body_sim?.lowercase()) {
+    val exceptYesNo = when (body_sim?.lowercase()) {
         "yes", "no" -> null
         else -> body_sim
     }
@@ -67,7 +67,7 @@ fun makeCellObject(line: String): Cell {
         launch_status,
         body_dimensions = cleanData.getOrNull(4),
         body_weight,
-        body_sim = execptYesNo,
+        body_sim = exceptYesNo,
         display_type = cleanData.getOrNull(7),
         display_size,
         display_resolution = cleanData.getOrNull(9),
