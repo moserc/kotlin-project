@@ -11,12 +11,12 @@ fun makeCellObject(line: String): Cell {
     }
 
     //cleaning task for launch_announced: capture year
-    val yearRegex = Regex("""\d{4}""")
+    val yearRegex = Regex("""(\d{4})""")
     val matchYear = yearRegex.find(line)
-    val launch_announced: Int? = matchYear?.value?.toIntOrNull()
+    val launch_announced: Int? = matchYear?.groups?.get(1)?.value?.toIntOrNull()
 
     //cleaning task for launch_status: capture one of 3 words
-    val launchRegex = Regex("(Discontinued|Cancelled|Released)")
+    val launchRegex = Regex("(Discontinued|Cancelled|Released\\s\\d{4})")
     val matchStatus = launchRegex.find(line)
     val launch_status = matchStatus?.value
 
