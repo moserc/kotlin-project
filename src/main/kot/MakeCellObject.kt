@@ -12,6 +12,9 @@ fun makeCellObject(line: String): Cell {
         if (item == "-" || item.isBlank() || item.isEmpty()) null else item.trim()
     }
 
+    //used in some cleaning tasks where directly grabbing index from cleanData doesn't work
+    var idx = -1
+
     //cleaning task for launchYear: capture year
     val yearRegex = Regex("""(\d{4})""")
     val matchYear = cleanData.getOrNull(2)?.let { yearRegex.find(it) }
@@ -29,7 +32,7 @@ fun makeCellObject(line: String): Cell {
     val releaseStatus = matchStatus?.value
 
     //cleaning task for weight: capture number before "g"
-    val weightRegex = Regex("""(\d+.?\d?+)\s(?=g)""")
+    val weightRegex = Regex("""(\d+.?\d+)\s(?=g)""")
     val matchWeight = cleanData.getOrNull(5)?.let { weightRegex.find(it) }
     val weight = matchWeight?.groupValues?.get(1)?.toFloatOrNull()
 
@@ -41,30 +44,31 @@ fun makeCellObject(line: String): Cell {
     }
 
     //cleaning task for displaySize: capture number before inches
-    val sizeRegex = Regex("""(\d+.?\d?+)\s?(?=inches)""")
-    val matchSize = cleanData.getOrNull(8)?.let { sizeRegex.find(it) }
+    val sizeRegex = Regex("""(\d+?.\d+)(\sinches)""")
+    for (i in cleanData.indices) {
+        if (cleanData[i]?.contains("inches") == true) {
+            idx = i
+        }
+    }
+    val matchSize = cleanData.getOrNull(idx)?.let { sizeRegex.find(it) }
     val displaySize = matchSize?.groupValues?.get(1)?.toFloatOrNull()
 
     //cleaning task for resolution: capture all before pixels
     val resRegex = Regex("""(\d+\s*x\s*\d+)\s*pixels""")
-    var idx = -1
     for (i in cleanData.indices) {
         if (cleanData[i]?.contains("pixels") == true) {
             idx = i
         }
     }
-    val resMatch = cleanData.getOrNull(idx)?.let {
-        resRegex.find(it)
-    }
+    val resMatch = cleanData.getOrNull(idx)?.let { resRegex.find(it) }
     val resolution = resMatch?.groupValues?.get(1)?.trim()
 
     //cleaning task for sensors -> make sure it's not all numbers
-    val onlyNums = Regex("""^\d+$""")
     idx++
-    val matchNums = cleanData.getOrNull(idx)?.let { onlyNums.find(it) }
-    val exceptNumsSensors =
-        if (matchNums == null) {
-            cleanData.getOrNull(idx)
+    val onlyNums = Regex("""^\d+$""")
+    val sensors =
+        if (cleanData[idx]?.contains(onlyNums) == false) {
+            cleanData.getOrNull(idx)?.trim()
         } else {
             null
         }
@@ -89,7 +93,7 @@ fun makeCellObject(line: String): Cell {
         displayType = cleanData.getOrNull(7),
         displaySize = displaySize,
         resolution = resolution,
-        sensors = exceptNumsSensors,
+        sensors = sensors,
         os = exceptNumsOS
     )
 }

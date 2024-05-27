@@ -15,6 +15,7 @@ val today = LocalDate.now().year
  */
 fun largestScreen(cellMap: HashMap<String, Cell>) {
     val displaySizes = cellMap.values.mapNotNull { it.displaySize }
+    //println(displaySizes)
     val max = displaySizes.maxOrNull()
     println("Largest screen size: %.2f inches".format(max))
 }
@@ -176,7 +177,7 @@ fun misMatched(cellMap: HashMap<String, Cell>) {
 fun singleSensor(cellMap: HashMap<String, Cell>) {
     var count = 0
     for ((_, cell) in cellMap) {
-        if (cell.sensors != null) {
+        if (cell.sensors != null && cell.releaseStatus?.contains("Released") == true) {
             //split each 'sensors' element using its internal comma as a delimiter
             val sensors = cell.sensors!!.split(",")
             /*increment the count if the new list is of size 1 and contains the word
@@ -188,7 +189,8 @@ fun singleSensor(cellMap: HashMap<String, Cell>) {
             }
         }
     }
-    println("Answer: There are $count phones with a single sensor listed in its features.")
+    println("Answer: Of phones that have been released, there are $count models " +
+            "with a single sensor listed in its features.")
 }
 
 /**

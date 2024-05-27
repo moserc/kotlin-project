@@ -106,7 +106,7 @@ when(obj){
 <img src = "img/q2.png" width="1100">
 
 #### How many phones have only one feature sensor?
-<img src = "img/q3.png" width="600">
+<img src = "img/q3.png" width="900">
 
 #### What year had the most phones launched in any year later than 1999? 
 <img src = "img/q4.png" width="800">
