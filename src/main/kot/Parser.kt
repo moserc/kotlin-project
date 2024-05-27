@@ -3,6 +3,8 @@ package kot
 /**
  * Parses the input such that commas are the delimiter except in cases when they
  * are contained within quoted text.
+ * @param line input string from csv read-in
+ * @return the parsed list of strings
  * @author Cheryl Moser
  */
 fun parse(line: String): List<String> {

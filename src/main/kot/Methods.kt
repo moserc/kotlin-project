@@ -11,6 +11,7 @@ val today = LocalDate.now().year
 /**
  * Takes a hashmap as a parameter.
  * Prints the largest screen size.
+ * @param cellMap hashmap of cell model data.
  */
 fun largestScreen(cellMap: HashMap<String, Cell>) {
     val displaySizes = cellMap.values.mapNotNull { it.displaySize }
@@ -21,6 +22,7 @@ fun largestScreen(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the smallest screen size.
+ * @param cellMap hashmap of cell model data.
  */
 fun smallestScreen(cellMap: HashMap<String, Cell>) {
     val displaySizes = cellMap.values.mapNotNull { it.displaySize }
@@ -31,6 +33,7 @@ fun smallestScreen(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the average screen size.
+ * @param cellMap hashmap of cell model data.
  */
 fun avgScreen(cellMap: HashMap<String, Cell>) {
     val displaySizes = cellMap.values.mapNotNull { it.displaySize }
@@ -43,6 +46,7 @@ fun avgScreen(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the average cell weight.
+ * @param cellMap hashmap of cell model data.
  */
 fun avgWeight(cellMap: HashMap<String, Cell>) {
     val cellWeights = cellMap.values.mapNotNull { it.weight }
@@ -53,6 +57,7 @@ fun avgWeight(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the heaviest cell weight.
+ * @param cellMap hashmap of cell model data.
  */
 fun maxWeight(cellMap: HashMap<String, Cell>) {
     val cellWeights = cellMap.values.mapNotNull { it.weight }
@@ -63,6 +68,7 @@ fun maxWeight(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the lightest cell weight.
+ * @param cellMap hashmap of cell model data.
  */
 fun minWeight(cellMap: HashMap<String, Cell>) {
     val cellWeights = cellMap.values.mapNotNull { it.weight }
@@ -75,6 +81,7 @@ fun minWeight(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the oldest cell age.
+ * @param cellMap hashmap of cell model data.
  */
 fun maxAge(cellMap: HashMap<String, Cell>) {
     val cellAges = cellMap.values.mapNotNull { it.launchYear }.filter { it in 1990..<today }
@@ -85,6 +92,7 @@ fun maxAge(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the newest cell age.
+ * @param cellMap hashmap of cell model data.
  */
 fun minAge(cellMap: HashMap<String, Cell>) {
     val cellAges = cellMap.values.mapNotNull { it.launchYear }.filter { it in 1990..<today }
@@ -95,6 +103,7 @@ fun minAge(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Prints the average cell age.
+ * @param cellMap hashmap of cell model data.
  */
 fun avgAge(cellMap: HashMap<String, Cell>) {
     val cellAges = cellMap.values.mapNotNull { it.launchYear }.filter { it in 1990..<today }
@@ -107,6 +116,8 @@ fun avgAge(cellMap: HashMap<String, Cell>) {
 /**
  * Takes a hashmap as a parameter.
  * Returns a hashmap containing the average cell weight for each company.
+ * @param cellMap hashmap of cell model data.
+ * @return hashmap containing average cell weight per company.
  */
 fun avgWeightByCompany(cellMap: HashMap<String, Cell>): Map<String, Double> {
 
@@ -134,6 +145,7 @@ fun avgWeightByCompany(cellMap: HashMap<String, Cell>): Map<String, Double> {
 /**
  * Checks for mismatches in launch announced year and actual release year.
  * Takes a hashmap as a parameter.
+ * @param cellMap hashmap of cell model data.
  */
 fun misMatched(cellMap: HashMap<String, Cell>) {
     val releasedRegex = Regex("""Released\s(\d{4})""")
@@ -157,8 +169,9 @@ fun misMatched(cellMap: HashMap<String, Cell>) {
 }
 
 /**
- * Takes a hashmap as a parameter.
- *
+ * Takes a hashmap as a parameter. Outputs the count of all released models
+ * with a single sensor listed.
+ * @param cellMap hashmap of cell model data.
  */
 fun singleSensor(cellMap: HashMap<String, Cell>) {
     var count = 0
@@ -180,7 +193,8 @@ fun singleSensor(cellMap: HashMap<String, Cell>) {
 
 /**
  * Takes a hashmap as a parameter.
- * Returns the years' release count.
+ * Calculates year mismatches between launch announce, and actual release years.
+ * @param cellMap hashmap of cell model data.
  */
 fun getCount(cellMap: HashMap<String, Cell>) {
     val statusRegex = Regex("""Released\s(\d{4})""")
