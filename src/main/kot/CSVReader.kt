@@ -14,7 +14,9 @@ class CSVReader(fileName: String, cellMap: HashMap<String, Cell>) { //primary co
 
     /**
      * Function for reading in data from csv.
-     * Returns the populated cellMap.
+     * @param fileName the name of the file to be read.
+     * @param cellMap the hashmap for cell model data.
+     * @return the cellMap containing keys = model and values = Cell object
      */
     private fun readIn(fileName: String, cellMap: HashMap<String, Cell>): HashMap<String, Cell> {
 
