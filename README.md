@@ -17,9 +17,7 @@
 
 ## Chosen language and version: Kotlin v1.9.0
 
-I chose this programming language because I am a fan of Android. I was going to
-do C++, but it's so prevalent that I figured I will be learning that on my own time
-soon no matter what.
+Inspired by my enthusiasm for Android technology.
 
 ## Some Language features
 
